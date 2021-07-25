@@ -1,0 +1,32 @@
+.message {
+    color: white;
+    background-color: #39F;
+    border-radius: 10px 10px 0 10px;
+    margin: 30px auto;
+    padding: 10px;
+    min-width: 180px;
+    max-width: 250px;
+    position: relative;
+}
+
+.message__head {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.message__text {
+    text-align: left;
+    font-size: 14px;
+}
+
+.message__tail {
+    border-left: 18px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 12px solid #39F;
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+}
