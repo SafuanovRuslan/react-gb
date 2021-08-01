@@ -5,7 +5,7 @@ function Messages({ messageList }) {
         <div className="messages">
             {messageList.map((message) => {
                 return (
-                    <div className="message">
+                    <div className="message" key={message.key}>
                         <div className="message__head">
                             <div className="message__sender">{message.sender}</div>
                             <div className="message__time">{new Date().getDate()}.{new Date().getMonth() + 1} {new Date().getHours()}:{new Date().getMinutes()}</div>
