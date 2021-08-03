@@ -1,0 +1,10 @@
+.messages {
+    width: 300px;
+    height: calc(100% - 40px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: flex-end;
+    justify-content: flex-end;
+}

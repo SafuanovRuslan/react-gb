@@ -1,6 +1,6 @@
-import Chats from './Chats'
-import Messages from './Messages'
-import './App.css';
+import Chats from '../ChatList'
+import Messages from '../MessageList'
+import './index.css';
 import { useEffect, useRef, useState } from 'react';
 import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';

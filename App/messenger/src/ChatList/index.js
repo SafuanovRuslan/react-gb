@@ -1,4 +1,4 @@
-import './Chats.css';
+import './index.css';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
-  export default function Chats({ chatList }) {
+function Chats({ chatList }) {
     const classes = useStyles();
   
     return (
@@ -31,32 +31,9 @@ const useStyles = makeStyles((theme) => ({
                     </ListItem>
                 )
             })}
-
-        
-          
         </List>
       </div>
-    );
-  }
-/*
-function Chats({ chatList }) {
-    return (
-        <div className="chats">
-            {chatList.map((chat) => {
-                return (
-                    <div className="chat" key={chat.key}>
-                        <div className="message__head">
-                            <div className="message__sender">{chat.sender}</div>
-                            <div className="message__time">{new Date().getDate()}.{new Date().getMonth() + 1} {new Date().getHours()}:{new Date().getMinutes()}</div>
-                        </div>
-                        <div className="message__text">{chat.text}</div>
-                        <div className="message__tail"></div>
-                    </div>
-                );
-            })}
-        </div>
     );
 }
   
 export default Chats;
-*/
