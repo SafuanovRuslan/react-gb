@@ -1,34 +1,7 @@
 .App {
   display: flex;
   justify-content: center;
-}
-
-.messenger {
-  text-align: center;
-  background-color: #444;
-  height: 100vh;
-  padding: 40px;
-  box-sizing: border-box;
-}
-
-input {
-  width: 260px;
-  height: 30px;
-  box-sizing: border-box;
-  border-radius: 15px;
-  outline: none;
-  border: 2px solid #39F;
-  padding: 6px 10px;
-}
-
-button {
-  width: 40px;
-  height: 40px;
-  box-sizing: border-box;
-  border-radius: 50%;
-  border: none;
-  background-color: #39F;
-  color: white;
-  margin-left: 10px;
-  outline: none;
+  flex-wrap: wrap;
+  width: 680px;
+  margin: 0 auto;
 }

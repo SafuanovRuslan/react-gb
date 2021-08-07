@@ -1,7 +1,6 @@
 import './index.css';
 
 function Message({ messageObj: message }) {
-    console.log(message);
     return (
         <div className="message">
             <div className="message__head">

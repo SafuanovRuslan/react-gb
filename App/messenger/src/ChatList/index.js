@@ -1,10 +1,8 @@
 import './index.css';
+import Chat from '../Chat'
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ChatIcon from '@material-ui/icons/Chat';
-import ListItemText from '@material-ui/core/ListItemText';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,12 +21,7 @@ function Chats({ chatList }) {
         <List component="nav" aria-label="main mailbox folders">
             {chatList.map((chat) => {
                 return (
-                    <ListItem button key={chat.id}>
-                        <ListItemIcon>
-                        <ChatIcon style={{ color: 'white' }} />
-                        </ListItemIcon>
-                        <ListItemText primary={chat.name} />
-                    </ListItem>
+                  <Chat chat={ chat } key={ chat.id }/>
                 )
             })}
         </List>
