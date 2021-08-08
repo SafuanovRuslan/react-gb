@@ -71,7 +71,7 @@ export default function Home({ match }) {
     <div className="messenger">
         <MessageList messageList={messageList[chatId]} />
         <TextField id="standard-basic" label="Message" className={classes.TextField} ref={input}/>
-        <button onClick={updateMessageList}><i className="far fa-paper-plane"></i></button>
+        <button onClick={updateMessageList} className="send-button"><i className="far fa-paper-plane"></i></button>
     </div>
   );
 }

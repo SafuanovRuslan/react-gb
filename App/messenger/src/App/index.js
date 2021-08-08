@@ -1,3 +1,5 @@
+import { Provider } from "react-redux";
+import { store } from '../store'
 import './index.css';
 import { useState } from 'react';
 import Router from '../Router'
@@ -5,7 +7,9 @@ import Router from '../Router'
 function App() {
 
   return (
-    <Router />
+    <Provider store={store}>
+      <Router />
+    </Provider>
   );
 }
 

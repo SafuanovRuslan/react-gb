@@ -1,10 +1,24 @@
 import './index.css';
+import { store } from '../store';
+import { CHANGE_VISIBILITY } from '../store/profile/actions';
+import {useSelector, useDispatch} from 'react-redux';
 
 export default function Profile() {
+    const profileInfo = useSelector(state => state);
+    const dispatch = useDispatch();
+
+    function changeVisibility() {
+        dispatch({
+            type: CHANGE_VISIBILITY,
+        })
+    }
 
     return (
         <div className="profile">
-            My name
+            <div>Имя: {profileInfo.visibility && profileInfo.name}</div>
+            <div>Возраст: {profileInfo.visibility && profileInfo.age}</div>
+            <div>Профессия: {profileInfo.visibility && profileInfo.profession}</div>
+            <button onClick={changeVisibility}>Change visibility</button>
         </div>
     );
 }
