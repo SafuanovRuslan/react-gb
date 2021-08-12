@@ -1,24 +1,32 @@
 import './index.css';
 import { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
 import MessageList from '../MessageList';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { sendMessage } from '../store/chats/actions';
 
 export default function Home({ match }) {
   let chatId = match.params.chatId;
 
-  const [messageList, setMessageList] = useState({
-    cid_1: [],
-    cid_2: [],
-    cid_3: [],
-    cid_4: [],
-  });
+  /* Заменил:
+     chatId = messageList[chatId] ? chatId : window.location = `/chat/${Object.keys(messageList)[0]}`;
+     На следующее:
+  */
 
-  chatId = messageList[chatId] ? chatId : window.location = `/chat/${Object.keys(messageList)[0]}`;
+  const chats = useSelector(state => state.chats);
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+  if (!chats[chatId] ) {
+    chatId = Object.keys(chats)[0];
+    history.push(`/chat/${chatId}`);
+  }
   
-
-  const updateMessageList = ({ sender = "Me", text = document.querySelector('input').value, key = new Date().getTime()}) => {
-    if ( document.querySelector('input').value === '' && sender !== 'Robot' ) return;
+  // querySelector обязательно уберу, просто времени не хватает =(
+  const updateMessageList = ({ sender = "Me", text = document.querySelector('.MuiInputBase-input').value, key = new Date().getTime()}) => {
+    if ( document.querySelector('.MuiInputBase-input').value === '' && sender !== 'Robot' ) return;
 
     let newMessage = {
       sender: sender,
@@ -26,20 +34,25 @@ export default function Home({ match }) {
       key: key,
     }
 
-    setMessageList((prevMessageList) => Object.assign({}, prevMessageList, prevMessageList[chatId].push(newMessage)));
+    dispatch(sendMessage({
+        id: chatId,
+        message: newMessage,
+      })
+    )
 
-    if ( sender !== 'Robot' ) document.querySelector('input').value = '';
+    if ( sender !== 'Robot' ) document.querySelector('.MuiInputBase-input').value = '';
   }
 
   const input = useRef(true);
 
   useEffect(() => {
     input.current?.children[1].children[0].focus();
-    if ( messageList[chatId].length === 0 ) return;
-    if ( messageList[chatId][messageList[chatId].length - 1].sender === "Me" ) {
+    if ( chats[chatId].messages.length === 0 ) return;
+    console.log(chats);
+    if ( chats[chatId].messages[chats[chatId].messages.length - 1].sender === "Me" ) {
       setTimeout(() => updateMessageList({sender: "Robot", text: "Hi, man!"}), 1500);
     }
-  }, [messageList, messageList[chatId]]);
+  }, [chats, chats[chatId]]);
 
   const useStyles = makeStyles({
     TextField: {
@@ -69,7 +82,7 @@ export default function Home({ match }) {
 
   return (
     <div className="messenger">
-        <MessageList messageList={messageList[chatId]} />
+        <MessageList messageList={chats[chatId].messages} />
         <TextField id="standard-basic" label="Message" className={classes.TextField} ref={input}/>
         <button onClick={updateMessageList} className="send-button"><i className="far fa-paper-plane"></i></button>
     </div>

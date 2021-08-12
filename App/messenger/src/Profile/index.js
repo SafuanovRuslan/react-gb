@@ -1,10 +1,10 @@
 import './index.css';
 import { store } from '../store';
-import { CHANGE_VISIBILITY } from '../store/profile/actions';
+import { CHANGE_VISIBILITY } from '../store/profile/actionTypes';
 import {useSelector, useDispatch} from 'react-redux';
 
 export default function Profile() {
-    const profileInfo = useSelector(state => state);
+    const profileInfo = useSelector(state => state.profile);
     const dispatch = useDispatch();
 
     function changeVisibility() {

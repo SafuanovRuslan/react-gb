@@ -1,5 +1,6 @@
 import Chats from '../ChatList'
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Home from '../Home';
 import Profile from '../Profile';
 import MenuItem from '../MenuItem';
@@ -10,12 +11,16 @@ import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 export default function Router() {
+  /*
   const [chatList, setChatList] = useState([
     {name: 'Work', id: 'cid_1'},
     {name: 'Friends', id: 'cid_2'},
     {name: 'Mother', id: 'cid_3'},
     {name: 'Technical support', id: 'cid_4'}
   ]);
+  */
+
+  const chatList = useSelector(state => state.chats);
 
   const useStyles = makeStyles({
     Link: {
@@ -34,7 +39,7 @@ export default function Router() {
         <Chats chatList={chatList}/>
 
         <Switch>
-          <Redirect from="/chat/" exact to="/chat/cid_1"/>
+          <Redirect from="/chat/" exact to={`/chat/${Object.keys(chatList)[0]}`}/>
           <Route path="/chat/:chatId" exact component={Home}></Route>
           <Route path="/profile" exact component={Profile}></Route>
           <Route exact component={Profile}>

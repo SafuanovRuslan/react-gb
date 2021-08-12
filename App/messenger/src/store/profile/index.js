@@ -1,10 +1,10 @@
-import { CHANGE_VISIBILITY } from './actions';
+import { CHANGE_VISIBILITY } from './actionTypes';
 
 const initialState = {
     name: 'User',
     age: 27,
     profession: 'web-developer',
-    visibility: false,
+    visibility: true,
 }
 
 export const profileReducer = (state = initialState, action) => {
