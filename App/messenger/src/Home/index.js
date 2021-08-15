@@ -5,15 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import MessageList from '../MessageList';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { sendMessage } from '../store/chats/actions';
+import { sendMessage, sendMessageWithReply } from '../store/chats/actions';
 
 export default function Home({ match }) {
   let chatId = match.params.chatId;
-
-  /* Заменил:
-     chatId = messageList[chatId] ? chatId : window.location = `/chat/${Object.keys(messageList)[0]}`;
-     На следующее:
-  */
 
   const chats = useSelector(state => state.chats);
   const dispatch = useDispatch();
@@ -34,25 +29,18 @@ export default function Home({ match }) {
       key: key,
     }
 
-    dispatch(sendMessage({
+    dispatch(sendMessageWithReply({
         id: chatId,
         message: newMessage,
       })
     )
-
-    if ( sender !== 'Robot' ) document.querySelector('.MuiInputBase-input').value = '';
   }
 
   const input = useRef(true);
 
   useEffect(() => {
     input.current?.children[1].children[0].focus();
-    if ( chats[chatId].messages.length === 0 ) return;
-    console.log(chats);
-    if ( chats[chatId].messages[chats[chatId].messages.length - 1].sender === "Me" ) {
-      setTimeout(() => updateMessageList({sender: "Robot", text: "Hi, man!"}), 1500);
-    }
-  }, [chats, chats[chatId]]);
+  }, []);
 
   const useStyles = makeStyles({
     TextField: {

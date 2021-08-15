@@ -28,7 +28,6 @@ export default function Chat({ chat }) {
       });
 
       const styles = useStyles();
-      console.log(chat)
 
     return (
         <Link to={`/chat/${chat[0]}`} className={ styles.Link }>
