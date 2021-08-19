@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Home from '../Home';
 import Profile from '../Profile';
+import News from '../News';
 import MenuItem from '../MenuItem';
 import PersonIcon from '@material-ui/icons/Person';
+import TodayIcon from '@material-ui/icons/Today';
 import ChatIcon from '@material-ui/icons/Chat';
 import { makeStyles } from '@material-ui/core/styles';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
@@ -42,6 +44,7 @@ export default function Router() {
           <Redirect from="/chat/" exact to={`/chat/${Object.keys(chatList)[0]}`}/>
           <Route path="/chat/:chatId" exact component={Home}></Route>
           <Route path="/profile" exact component={Profile}></Route>
+          <Route path="/news" exact component={News}></Route>
           <Route exact component={Profile}>
           </Route>
         </Switch>
@@ -55,6 +58,11 @@ export default function Router() {
           <Link to='/chat/cid_1' className={ style.Link }>
             <MenuItem>
               <ChatIcon style={{ color: 'white' }} />
+            </MenuItem>
+          </Link>
+          <Link to='/news' className={ style.Link }>
+            <MenuItem>
+              <TodayIcon style={{ color: 'white' }} />
             </MenuItem>
           </Link>
         </div>

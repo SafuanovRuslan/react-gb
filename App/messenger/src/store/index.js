@@ -4,6 +4,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 import { profileReducer } from './profile';
 import { chatsReducer } from './chats';
+import { newsReducer } from "./news";
 
   const persistConfig = {
     key: 'GB-messenger',
@@ -13,6 +14,7 @@ import { chatsReducer } from './chats';
   const rootReducer = combineReducers({
         profile: profileReducer,
         chats: chatsReducer,
+        news: newsReducer
   });
   
   const persistedReducer = persistReducer(persistConfig, rootReducer);
