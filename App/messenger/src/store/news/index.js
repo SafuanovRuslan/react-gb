@@ -33,6 +33,7 @@ export const newsReducer = (state = initialState, { type, payload }) => {
         data: payload,
         request: {
           status: REQUEST_STATUS.SUCCESS,
+          error: null,
         },
       };
     }

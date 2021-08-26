@@ -1,11 +1,11 @@
 import './index.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import MessageList from '../MessageList';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { sendMessage, sendMessageWithReply } from '../store/chats/actions';
+import { sendMessageWithReply } from '../store/chats/actions';
 
 export default function Home({ match }) {
   let chatId = match.params.chatId;

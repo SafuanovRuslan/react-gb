@@ -1,8 +1,8 @@
 import './index.css';
 import Chat from '../Chat';
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { chatAdd, chatDelete } from '../store/chats/actions';
+import { useDispatch } from 'react-redux';
+import { chatAdd } from '../store/chats/actions';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 

@@ -33,7 +33,7 @@ export default function Chat({ chat }) {
         <Link to={`/chat/${chat[0]}`} className={ styles.Link }>
             <ListItem button key={chat[0]}>
                 <ListItemIcon>
-                <ChatIcon style={{ color: 'white' }} />
+                <ChatIcon style={{ color: 'white', padding: '10px'}} />
                 </ListItemIcon>
                 <ListItemText primary={chat[1].name} />
                 <ClearIcon style={{ color: 'white' }} onClick={clickHandle}/>
