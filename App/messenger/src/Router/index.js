@@ -18,14 +18,6 @@ import { PublicRoute } from '../hocs/PublicRoute';
 import firebase from 'firebase';
 
 export default function Router() {
-  /*
-  const [chatList, setChatList] = useState([
-    {name: 'Work', id: 'cid_1'},
-    {name: 'Friends', id: 'cid_2'},
-    {name: 'Mother', id: 'cid_3'},
-    {name: 'Technical support', id: 'cid_4'}
-  ]);
-  */
 
   const chatList = useSelector(state => state.chats);
 

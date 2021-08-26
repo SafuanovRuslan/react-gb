@@ -1,5 +1,4 @@
 import './index.css';
-import { store } from '../store';
 import { CHANGE_VISIBILITY } from '../store/profile/actionTypes';
 import {useSelector, useDispatch} from 'react-redux';
 

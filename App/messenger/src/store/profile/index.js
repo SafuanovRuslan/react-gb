@@ -1,6 +1,6 @@
 import { CHANGE_VISIBILITY } from './actionTypes';
 
-const initialState = {
+export const initialState = {
     name: 'User',
     age: 27,
     profession: 'web-developer',
